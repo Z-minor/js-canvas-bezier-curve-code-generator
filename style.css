@@ -80,6 +80,7 @@ input {
   left: calc(106vh + 40px);
   right: 120px;
   height: calc(100vh - 240px);
+  min-width: 300px;
   border: 5px solid rgba(0, 0, 0, 1);
   background-color: rgb(255, 170, 217);
   font-family: 'Noto Serif TC', serif;
