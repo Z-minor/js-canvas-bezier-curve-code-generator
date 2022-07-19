@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
+
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  margin: 0;
+  overflow: scroll;
+  background-color: rgb(109, 216, 216);
+  font-family: 'Noto Serif TC', serif;
+
+}
+
+#m {  
+
+  position: absolute;
+  top: 120px;
+  height: calc(100vh - 240px);
+  min-height: 310px;
+  left: 120px;
+  width: calc(100vh - 240px);
+  min-width: 310px;
+  border: 5px solid rgba(0, 0, 0, 1);
+
+}
+
+#t {
+
+  position: absolute;
+  bottom: 70px;
+  height: 40px;
+  /*left: 0;
+  right: 0;
+  margin: auto;*/  
+  width: 200px;
+  left: calc(50vh - 120px);
+  border: 0px solid rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+input {
+  position: absolute;
+  bottom: 70px;
+  height: 40px;
+  width: 50px;
+  left: calc(50vh + 30px);
+  border: 0px solid rgba(0, 0, 0, 1);
+  border-radius: 5px;
+  background-color: rgb(174, 243, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Noto Serif TC', serif;
+
+}
+
+#可填數值 input{
+  display: none;
+}
+
+#比例尺 {
+  position: absolute;
+  height: 10px;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+#最終代碼 {
+  position: absolute;
+  top: 120px;
+  left: calc(106vh + 40px);
+  right: 120px;
+  height: calc(100vh - 240px);
+  border: 5px solid rgba(0, 0, 0, 1);
+  background-color: rgb(255, 170, 217);
+  font-family: 'Noto Serif TC', serif;
+  overflow: scroll;
+}
+
+#按鈕 {
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 120px;
+  height: calc(100vh - 240px);
+  left: calc(100vh - 80px);
+  border: 0px solid rgba(0, 0, 0, 1);
+}
+
+#按鈕 div {
+  background-color: rgb(255, 216, 144);
+  border: 5px solid rgb(0, 0, 0);
+  height: calc((100vh - 240px)/12);
+  width: calc(6vh + 80px);
+  font-size: calc(2.3vh - 6px);
+  text-align:center;
+  line-height: calc((100vh - 340px)/12);
+}
+
+#按鈕 div:hover {
+  cursor: pointer;
+  background-color: rgb(255, 238, 205);
+}
+
+@media (max-height: 782px){
+
+  #按鈕 div {
+    font-size: 12px;
+  }
+
+}
+
+
+@media (max-height: 550px){
+
+  #最終代碼 {
+    position: absolute;
+    top: calc(50vh - 155px);
+    left: calc(623px - (550px - 100vh) / 2);
+    right: calc(50vh - 155px);
+
+    height: 310px;
+    border: 5px solid rgba(0, 0, 0, 1);
+    background-color: rgb(255, 170, 217);
+    font-family: 'Noto Serif TC', serif;
+  }
+
+  input {
+    bottom: calc(70px - (550px - 100vh) / 2);
+  }
+
+  #m {
+    top: calc(50vh - 155px);
+    left: calc(50vh - 155px);
+  }
+  
+  #按鈕 {
+
+    height: 310px;
+    left: calc(470px - (550px - 100vh) / 2);
+    top: calc(50vh - 155px);
+
+  }
+
+  #按鈕 div {
+
+    height: 26px;
+    width: 113px;
+    font-size: calc(2.3vh - 6px);
+    text-align:center;
+    line-height: 16px;
+    font-size: 12px;
+    
+  }
+
+  #t {
+
+    bottom: calc(70px - (550px - 100vh) / 2);
+
+  }
+
+}
