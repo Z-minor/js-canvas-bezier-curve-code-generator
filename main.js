@@ -74,10 +74,16 @@ window.addEventListener('mousemove',(event) => {
   if(輸出尺寸 !== height){
     滑鼠對齊輸出尺寸();
   }
+  
+  mouse.x-=125;
+  mouse.y-=125;
+  mouse.未修正x-=125;
+  mouse.未修正y-=125;
 
   if(滑鼠按著 == true&&對齊模式 == true){
     對齊函數();
   }
+
 })
 
 
@@ -374,16 +380,18 @@ function 切換被選取的點的整數小數模式(){
 
 
 function 對齊函數(){
+  
   let newX = mouse.x;
   let newY = mouse.y;
+  
   //let 對齊功能被觸發 = false;
   //let 對齊目標整數與否;
   for(let i=0, j=0;i<curves.length;i++){
     if(j<被選取到的點.length){
       if(被選取到的點[j]!==i*4){
-        if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p1)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p1)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p2)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p2))<輸出尺寸/60){
-          newX = curves[i].p1*height/輸出尺寸+125;
-          newY = curves[i].p2*height/輸出尺寸+125;
+        if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p1)*((mouse.x*輸出尺寸/height)-curves[i].p1)+((mouse.y*輸出尺寸/height)-curves[i].p2)*((mouse.y*輸出尺寸/height)-curves[i].p2))<輸出尺寸/60){
+          newX = curves[i].p1*height/輸出尺寸;
+          newY = curves[i].p2*height/輸出尺寸;
           /*對齊功能被觸發 = true;
           if(curves[i].p1%1==0){
             對齊目標整數與否=true;
@@ -398,9 +406,9 @@ function 對齊函數(){
       }
     }
     else{
-      if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p1)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p1)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p2)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p2))<輸出尺寸/60){
-        newX = curves[i].p1*height/輸出尺寸+125;
-        newY = curves[i].p2*height/輸出尺寸+125;
+      if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p1)*((mouse.x*輸出尺寸/height)-curves[i].p1)+((mouse.y*輸出尺寸/height)-curves[i].p2)*((mouse.y*輸出尺寸/height)-curves[i].p2))<輸出尺寸/60){
+        newX = curves[i].p1*height/輸出尺寸;
+        newY = curves[i].p2*height/輸出尺寸;
         /*對齊功能被觸發 = true;
         if(curves[i].p1%1==0){
           對齊目標整數與否=true;
@@ -413,9 +421,9 @@ function 對齊函數(){
 
     if(j<被選取到的點.length){
       if(被選取到的點[j]!==i*4+1){
-        if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p3)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p3)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p4)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p4))<輸出尺寸/60){
-          newX = curves[i].p3*height/輸出尺寸+125;
-          newY = curves[i].p4*height/輸出尺寸+125;
+        if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p3)*((mouse.x*輸出尺寸/height)-curves[i].p3)+((mouse.y*輸出尺寸/height)-curves[i].p4)*((mouse.y*輸出尺寸/height)-curves[i].p4))<輸出尺寸/60){
+          newX = curves[i].p3*height/輸出尺寸;
+          newY = curves[i].p4*height/輸出尺寸;
           /*對齊功能被觸發 = true;
           if(curves[i].p3%1==0){
             對齊目標整數與否=true;
@@ -430,9 +438,9 @@ function 對齊函數(){
       }
     }
     else{
-      if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p3)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p3)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p4)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p4))<輸出尺寸/60){
-        newX = curves[i].p3*height/輸出尺寸+125;
-        newY = curves[i].p4*height/輸出尺寸+125;
+      if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p3)*((mouse.x*輸出尺寸/height)-curves[i].p3)+((mouse.y*輸出尺寸/height)-curves[i].p4)*((mouse.y*輸出尺寸/height)-curves[i].p4))<輸出尺寸/60){
+        newX = curves[i].p3*height/輸出尺寸;
+        newY = curves[i].p4*height/輸出尺寸;
         /*對齊功能被觸發 = true;
         if(curves[i].p3%1==0){
           對齊目標整數與否=true;
@@ -445,9 +453,9 @@ function 對齊函數(){
 
     if(j<被選取到的點.length){
       if(被選取到的點[j]!==i*4+3){
-        if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p7)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p7)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p8)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p8))<輸出尺寸/60){
-          newX = curves[i].p7*height/輸出尺寸+125;
-          newY = curves[i].p8*height/輸出尺寸+125;
+        if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p7)*((mouse.x*輸出尺寸/height)-curves[i].p7)+((mouse.y*輸出尺寸/height)-curves[i].p8)*((mouse.y*輸出尺寸/height)-curves[i].p8))<輸出尺寸/60){
+          newX = curves[i].p7*height/輸出尺寸;
+          newY = curves[i].p8*height/輸出尺寸;
           /*對齊功能被觸發 = true;
           if(curves[i].p7%1==0){
             對齊目標整數與否=true;
@@ -462,9 +470,9 @@ function 對齊函數(){
       }
     }
     else{
-      if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p7)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p7)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p8)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p8))<輸出尺寸/60){
-        newX = curves[i].p7*height/輸出尺寸+125;
-        newY = curves[i].p8*height/輸出尺寸+125;
+      if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p7)*((mouse.x*輸出尺寸/height)-curves[i].p7)+((mouse.y*輸出尺寸/height)-curves[i].p8)*((mouse.y*輸出尺寸/height)-curves[i].p8))<輸出尺寸/60){
+        newX = curves[i].p7*height/輸出尺寸;
+        newY = curves[i].p8*height/輸出尺寸;
         /*對齊功能被觸發 = true;
         if(curves[i].p7%1==0){
           對齊目標整數與否=true;
@@ -477,9 +485,9 @@ function 對齊函數(){
 
     if(j<被選取到的點.length){
       if(被選取到的點[j]!==i*4+2){
-        if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p5)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p5)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p6)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p6))<輸出尺寸/60){
-          newX = curves[i].p5*height/輸出尺寸+125;
-          newY = curves[i].p6*height/輸出尺寸+125;
+        if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p5)*((mouse.x*輸出尺寸/height)-curves[i].p5)+((mouse.y*輸出尺寸/height)-curves[i].p6)*((mouse.y*輸出尺寸/height)-curves[i].p6))<輸出尺寸/60){
+          newX = curves[i].p5*height/輸出尺寸;
+          newY = curves[i].p6*height/輸出尺寸;
           /*對齊功能被觸發 = true;
           if(curves[i].p5%1==0){
             對齊目標整數與否=true;
@@ -494,9 +502,9 @@ function 對齊函數(){
       }
     }
     else{
-      if(Math.sqrt((((mouse.x-125)*輸出尺寸/height)-curves[i].p5)*(((mouse.x-125)*輸出尺寸/height)-curves[i].p5)+(((mouse.y-125)*輸出尺寸/height)-curves[i].p6)*(((mouse.y-125)*輸出尺寸/height)-curves[i].p6))<輸出尺寸/60){
-        newX = curves[i].p5*height/輸出尺寸+125;
-        newY = curves[i].p6*height/輸出尺寸+125;
+      if(Math.sqrt(((mouse.x*輸出尺寸/height)-curves[i].p5)*((mouse.x*輸出尺寸/height)-curves[i].p5)+((mouse.y*輸出尺寸/height)-curves[i].p6)*((mouse.y*輸出尺寸/height)-curves[i].p6))<輸出尺寸/60){
+        newX = curves[i].p5*height/輸出尺寸;
+        newY = curves[i].p6*height/輸出尺寸;
         /*對齊功能被觸發 = true;
         if(curves[i].p5%1==0){
           對齊目標整數與否=true;
@@ -507,6 +515,7 @@ function 對齊函數(){
       }
     }
   }
+  
   mouse.x = Math.round(newX*2)/2;
   mouse.y = Math.round(newY*2)/2;
 
@@ -639,7 +648,6 @@ function 按下滑鼠(){
   
   
   
-  
 
 
   if(被選取到的點.length <= 1){
@@ -653,25 +661,25 @@ function 按下滑鼠(){
     let 是否有點到已選點 = false;
     for(let i=0;i<被選取到的點.length;i++){
       if(被選取到的點[i]%4 == 0){
-        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p1*height/輸出尺寸-mouse.未修正x+125)*(curves[Math.floor(被選取到的點[i]/4)].p1*height/輸出尺寸-mouse.未修正x+125)+(curves[Math.floor(被選取到的點[i]/4)].p2*height/輸出尺寸-mouse.未修正y+125)*(curves[Math.floor(被選取到的點[i]/4)].p2*height/輸出尺寸-mouse.未修正y+125))<路徑頭尾圓點半徑){
+        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p1*height/輸出尺寸-mouse.未修正x)*(curves[Math.floor(被選取到的點[i]/4)].p1*height/輸出尺寸-mouse.未修正x)+(curves[Math.floor(被選取到的點[i]/4)].p2*height/輸出尺寸-mouse.未修正y)*(curves[Math.floor(被選取到的點[i]/4)].p2*height/輸出尺寸-mouse.未修正y))<路徑頭尾圓點半徑){
           是否有點到已選點 = true;
           抓著的點 = 被選取到的點[i];
         }
       }
       if(被選取到的點[i]%4 == 1){
-        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p3*height/輸出尺寸-mouse.未修正x+125)*(curves[Math.floor(被選取到的點[i]/4)].p3*height/輸出尺寸-mouse.未修正x+125)+(curves[Math.floor(被選取到的點[i]/4)].p4*height/輸出尺寸-mouse.未修正y+125)*(curves[Math.floor(被選取到的點[i]/4)].p4*height/輸出尺寸-mouse.未修正y+125))<貝茲控制點圓點半徑){
+        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p3*height/輸出尺寸-mouse.未修正x)*(curves[Math.floor(被選取到的點[i]/4)].p3*height/輸出尺寸-mouse.未修正x)+(curves[Math.floor(被選取到的點[i]/4)].p4*height/輸出尺寸-mouse.未修正y)*(curves[Math.floor(被選取到的點[i]/4)].p4*height/輸出尺寸-mouse.未修正y))<貝茲控制點圓點半徑){
           是否有點到已選點 = true;
           抓著的點 = 被選取到的點[i];
         }
       }
       if(被選取到的點[i]%4 == 3){
-        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p7*height/輸出尺寸-mouse.未修正x+125)*(curves[Math.floor(被選取到的點[i]/4)].p7*height/輸出尺寸-mouse.未修正x+125)+(curves[Math.floor(被選取到的點[i]/4)].p8*height/輸出尺寸-mouse.未修正y+125)*(curves[Math.floor(被選取到的點[i]/4)].p8*height/輸出尺寸-mouse.未修正y+125))<路徑頭尾圓點半徑){
+        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p7*height/輸出尺寸-mouse.未修正x)*(curves[Math.floor(被選取到的點[i]/4)].p7*height/輸出尺寸-mouse.未修正x)+(curves[Math.floor(被選取到的點[i]/4)].p8*height/輸出尺寸-mouse.未修正y)*(curves[Math.floor(被選取到的點[i]/4)].p8*height/輸出尺寸-mouse.未修正y))<路徑頭尾圓點半徑){
           是否有點到已選點 = true;
           抓著的點 = 被選取到的點[i];
         }
       }
       if(被選取到的點[i]%4 == 2){
-        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p5*height/輸出尺寸-mouse.未修正x+125)*(curves[Math.floor(被選取到的點[i]/4)].p5*height/輸出尺寸-mouse.未修正x+125)+(curves[Math.floor(被選取到的點[i]/4)].p6*height/輸出尺寸-mouse.未修正y+125)*(curves[Math.floor(被選取到的點[i]/4)].p6*height/輸出尺寸-mouse.未修正y+125))<貝茲控制點圓點半徑){
+        if(Math.sqrt((curves[Math.floor(被選取到的點[i]/4)].p5*height/輸出尺寸-mouse.未修正x)*(curves[Math.floor(被選取到的點[i]/4)].p5*height/輸出尺寸-mouse.未修正x)+(curves[Math.floor(被選取到的點[i]/4)].p6*height/輸出尺寸-mouse.未修正y)*(curves[Math.floor(被選取到的點[i]/4)].p6*height/輸出尺寸-mouse.未修正y))<貝茲控制點圓點半徑){
           是否有點到已選點 = true;
           抓著的點 = 被選取到的點[i];
         }
@@ -687,16 +695,16 @@ function 按下滑鼠(){
 
   if(被選取到的點.length == 0){
     for(let i=0; i<curves.length; i++){
-      if(Math.sqrt((curves[i].p1*height/輸出尺寸-mouse.未修正x+125)*(curves[i].p1*height/輸出尺寸-mouse.未修正x+125)+(curves[i].p2*height/輸出尺寸-mouse.未修正y+125)*(curves[i].p2*height/輸出尺寸-mouse.未修正y+125))<路徑頭尾圓點半徑){
+      if(Math.sqrt((curves[i].p1*height/輸出尺寸-mouse.未修正x)*(curves[i].p1*height/輸出尺寸-mouse.未修正x)+(curves[i].p2*height/輸出尺寸-mouse.未修正y)*(curves[i].p2*height/輸出尺寸-mouse.未修正y))<路徑頭尾圓點半徑){
         抓著的點 = 被選取到的點 = [i*4];
       }
-      if(Math.sqrt((curves[i].p3*height/輸出尺寸-mouse.未修正x+125)*(curves[i].p3*height/輸出尺寸-mouse.未修正x+125)+(curves[i].p4*height/輸出尺寸-mouse.未修正y+125)*(curves[i].p4*height/輸出尺寸-mouse.未修正y+125))<貝茲控制點圓點半徑){
+      if(Math.sqrt((curves[i].p3*height/輸出尺寸-mouse.未修正x)*(curves[i].p3*height/輸出尺寸-mouse.未修正x)+(curves[i].p4*height/輸出尺寸-mouse.未修正y)*(curves[i].p4*height/輸出尺寸-mouse.未修正y))<貝茲控制點圓點半徑){
         抓著的點 = 被選取到的點 = [i*4+1];
       }
-      if(Math.sqrt((curves[i].p7*height/輸出尺寸-mouse.未修正x+125)*(curves[i].p7*height/輸出尺寸-mouse.未修正x+125)+(curves[i].p8*height/輸出尺寸-mouse.未修正y+125)*(curves[i].p8*height/輸出尺寸-mouse.未修正y+125))<路徑頭尾圓點半徑){
+      if(Math.sqrt((curves[i].p7*height/輸出尺寸-mouse.未修正x)*(curves[i].p7*height/輸出尺寸-mouse.未修正x)+(curves[i].p8*height/輸出尺寸-mouse.未修正y)*(curves[i].p8*height/輸出尺寸-mouse.未修正y))<路徑頭尾圓點半徑){
         抓著的點 = 被選取到的點 = [i*4+3];
       }
-      if(Math.sqrt((curves[i].p5*height/輸出尺寸-mouse.未修正x+125)*(curves[i].p5*height/輸出尺寸-mouse.未修正x+125)+(curves[i].p6*height/輸出尺寸-mouse.未修正y+125)*(curves[i].p6*height/輸出尺寸-mouse.未修正y+125))<貝茲控制點圓點半徑){
+      if(Math.sqrt((curves[i].p5*height/輸出尺寸-mouse.未修正x)*(curves[i].p5*height/輸出尺寸-mouse.未修正x)+(curves[i].p6*height/輸出尺寸-mouse.未修正y)*(curves[i].p6*height/輸出尺寸-mouse.未修正y))<貝茲控制點圓點半徑){
         抓著的點 = 被選取到的點 = [i*4+2];
       }
     }
@@ -726,14 +734,14 @@ function 滑鼠對齊輸出尺寸(){
   if(整數模式==false){
     最近點-=單位距離/2;
   }
-  while(最近點 < mouse.x - 125){
+  while(最近點 < mouse.x){
     最近點 += 單位距離;
   }
-  if(最近點 - (mouse.x-125) > (mouse.x-125) + 單位距離 - 最近點){
-    mouse.x = 最近點 - 單位距離 + 125;
+  if(最近點 - mouse.x > mouse.x + 單位距離 - 最近點){
+    mouse.x = 最近點 - 單位距離;
   }
   else{
-    mouse.x = 最近點 + 125;
+    mouse.x = 最近點;
   }
 
   最近點 = 0;
@@ -741,34 +749,34 @@ function 滑鼠對齊輸出尺寸(){
     最近點-=單位距離/2;
   }
 
-  while(最近點 < mouse.y - 125){
+  while(最近點 < mouse.y){
     最近點 += 單位距離;
   }
-  if(最近點 - (mouse.y-125) > (mouse.y-125) + 單位距離-最近點){
-    mouse.y = 最近點 - 單位距離 + 125;
+  if(最近點 - mouse.y > mouse.y + 單位距離-最近點){
+    mouse.y = 最近點 - 單位距離;
   }
   else{
-    mouse.y = 最近點 + 125;
+    mouse.y = 最近點;
   }
 }
 
 function 矩形選取(){
 
   if(未修正移動前原始座標x<mouse.未修正x){
-    矩形左上x=未修正移動前原始座標x-126;
-    矩形右下x=mouse.未修正x-124;
+    矩形左上x=未修正移動前原始座標x-1;
+    矩形右下x=mouse.未修正x+1;
   }
   else{
-    矩形左上x=mouse.未修正x-126;
-    矩形右下x=未修正移動前原始座標x-124;
+    矩形左上x=mouse.未修正x-1;
+    矩形右下x=未修正移動前原始座標x+1;
   }
   if(未修正移動前原始座標y<mouse.未修正y){
-    矩形左上y=未修正移動前原始座標y-126;
-    矩形右下y=mouse.未修正y-124;
+    矩形左上y=未修正移動前原始座標y-1;
+    矩形右下y=mouse.未修正y+1;
   }
   else{
-    矩形左上y=mouse.未修正y-126;
-    矩形右下y=未修正移動前原始座標y-124;
+    矩形左上y=mouse.未修正y-1;
+    矩形右下y=未修正移動前原始座標y+1;
   }
 
 
@@ -992,20 +1000,20 @@ function 點擊誤差(){
   //實作吸附到滑鼠中心
   
   if(抓著的點%4==0){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p1-(mouse.x-125)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p2-(mouse.y-125)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p1-(mouse.x)*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p2-(mouse.y)*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==1){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p3-(mouse.x-125)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p4-(mouse.y-125)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p3-(mouse.x)*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p4-(mouse.y)*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==2){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p5-(mouse.x-125)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p6-(mouse.y-125)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p5-(mouse.x)*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p6-(mouse.y)*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==3){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p7-(mouse.x-125)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p8-(mouse.y-125)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p7-(mouse.x)*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p8-(mouse.y)*輸出尺寸/height)*2)/2;
   }
 }
 
@@ -1217,7 +1225,7 @@ function 繪製矩形選取區(){
   ctx.setLineDash([3,5]);
   ctx.lineWidth = 1;
   ctx.strokeStyle = "hsla(0,0%,0%,1)";
-  ctx.strokeRect(未修正移動前原始座標x-125, 未修正移動前原始座標y-125, mouse.未修正x-未修正移動前原始座標x, mouse.未修正y-未修正移動前原始座標y);
+  ctx.strokeRect(未修正移動前原始座標x, 未修正移動前原始座標y, mouse.未修正x-未修正移動前原始座標x, mouse.未修正y-未修正移動前原始座標y);
   ctx.setLineDash([]);
 }
 
@@ -1315,7 +1323,7 @@ function loop(){
   }
   拖曳選點();
   繪製曲線();
-  if(滑鼠按著==true&&mouse.未修正x-125>=0&&mouse.未修正x-125<=height){
+  if(滑鼠按著==true&&mouse.未修正x>=0&&mouse.未修正x<=height){
     代碼生成();
   }
   if(curves.length==0){
@@ -1325,7 +1333,7 @@ function loop(){
 
   //除錯用 繪製鼠標
   /*ctx.beginPath();
-  ctx.arc(mouse.x-125, mouse.y-125, 2, 0, 2 * Math.PI);
+  ctx.arc(mouse.x, mouse.y, 2, 0, 2 * Math.PI);
   ctx.fillStyle = "hsla(0,100%,0%,1)"
   ctx.fill();*/
   
@@ -1338,10 +1346,10 @@ function loop(){
 
 
   document.getElementById('t').innerHTML = `輸出尺寸 =`;
-  /*document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，計數器=${計數器}，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}`;
+  document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}`;
   if(curves.length>0){
-    document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，計數器=${計數器}，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
-  }*/
+    document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
+  }
   計時器++;
 
   requestAnimationFrame(loop);
