@@ -44,8 +44,9 @@ window.addEventListener('mousemove',(event) => {
   mouse.界內 = true;
 
   if(視窗高度<550){
-    mouse.x += (550-視窗高度)/2;
-    mouse.y += (550-視窗高度)/2;
+    mouse.未修正x = mouse.x += (550-視窗高度)/2;
+    mouse.未修正y = mouse.y += (550-視窗高度)/2;
+
   }
 
   if(mouse.x<125){
@@ -635,6 +636,7 @@ function 按下滑鼠(){
   移動前原始座標y = mouse.y;
   未修正移動前原始座標x = mouse.未修正x;
   未修正移動前原始座標y = mouse.未修正y;
+  
   
   
   
