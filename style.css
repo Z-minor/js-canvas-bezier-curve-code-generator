@@ -48,10 +48,11 @@ body {
 
 input {
   position: absolute;
-  bottom: 70px;
-  height: 40px;
-  width: 50px;
-  left: calc(50vh + 30px);
+  bottom: 74px;
+  height: 30px;
+  width: 52px;
+  padding:5px;
+  left: calc(50vh + 26px);
   border: 0px solid rgba(0, 0, 0, 1);
   border-radius: 5px;
   background-color: rgb(174, 243, 243);
@@ -137,7 +138,7 @@ input {
   }
 
   input {
-    bottom: calc(70px - (550px - 100vh) / 2);
+    bottom: calc(74px - (550px - 100vh) / 2);
   }
 
   #m {

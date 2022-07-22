@@ -1,6 +1,7 @@
 //初始化畫布
 
 
+
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -23,6 +24,9 @@ window.onresize = function() {
   ctx.fillRect(0,0,width,height);
   document.getElementById('t').innerHTML = `輸出尺寸 =`;
 }
+
+
+//滾輪狀態檢測
 
 
 // 滑鼠位子監聽
@@ -84,6 +88,8 @@ window.addEventListener('mousemove',(event) => {
   if(滑鼠按著 == true&&對齊模式 == true){
     對齊函數();
   }
+  
+
 
 })
 
@@ -129,6 +135,7 @@ let 計時器 = 0;
 let 更新延遲;
 let 代碼 = "代碼將生成於此處";
 let 點擊在按鈕處 = false;
+let 焦點;
 
 
 
@@ -160,6 +167,18 @@ let 尺寸 = document.getElementById('輸出尺寸');
 let 最終代碼顯示區域 = document.getElementById('最終代碼');
 最終代碼顯示區域.innerHTML=代碼;
 document.getElementById('比例尺').style.width = `${比例尺長度}px`;
+let body = document.querySelector('body');
+
+//滾輪狀態檢測
+
+let 滾輪狀態;
+window.addEventListener('wheel', 滾輪啟動);
+
+
+function 滾輪啟動(e){
+  滾輪狀態 = e.deltaY;
+  
+}
 
 function 網格開關函數(){
   點擊在按鈕處 = true;
@@ -562,11 +581,14 @@ function 更新輸出尺寸(){
   
   輸出尺寸 = parseInt(尺寸.value);
   if(parseInt(尺寸.value)<5||尺寸.value==''){
-    輸出尺寸='5';
+    輸出尺寸=5;
     }
     if(parseInt(尺寸.value)>32768){
-      輸出尺寸='32768';
+      輸出尺寸=32768;
     }
+
+
+
   原點x = 輸出尺寸/2;
   原點y = 輸出尺寸/2;
 
@@ -574,6 +596,7 @@ function 更新輸出尺寸(){
   if(原點x%1!==0){
     原點y = 原點x = (輸出尺寸+1)/2;
   }
+
   比例尺長度 = 輸出尺寸;
   document.getElementById('比例尺').style.width = `${比例尺長度}px`;
 }
@@ -592,6 +615,9 @@ function 檢測鍵盤按鍵(e){
 
 function 鬆開鍵盤(){
   代碼生成();
+  if(焦點==尺寸){
+    更新輸出尺寸();
+  }
   keyN已被按下 = false;
 }
 
@@ -629,7 +655,6 @@ function 滑鼠放開(){
  //檢查點擊到哪個控制點
 function 按下滑鼠(){
 
-  更新輸出尺寸();
 
   if(mouse.界內 == false){
     mouse.按下滑鼠時在界內 = false;
@@ -808,7 +833,7 @@ function createNewCurve() {
   儲存當前狀態();
   
   let 目標插入點;
-  let p1,p2,p3,p4;
+  let p1,p2,p3,p4,p5,p6,p7,p8;
   if(被選取到的點.length === 0){
     目標插入點 = curves.length;
   }
@@ -1304,24 +1329,56 @@ function 代碼生成(){
 }
 function 空代碼跑馬燈(){
   if(計時器%300<50){
-    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.0　2022夏　by琴房關燈俠<br/><br/>請先調整輸出尺寸，再開始繪製曲線。<br/>如果繪製曲線後，才縮小輸出尺寸，<br/>已繪製的曲線，可能會溢出畫面而無法完整顯示。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處";
+    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>1.1更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處";
   }
   else if(計時器%300>=50&&計時器%300<100){
-    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.0　2022夏　by琴房關燈俠<br/><br/>請先調整輸出尺寸，再開始繪製曲線。<br/>如果繪製曲線後，才縮小輸出尺寸，<br/>已繪製的曲線，可能會溢出畫面而無法完整顯示。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處.";
+    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>1.1更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處.";
   }
   else if(計時器%300>=100&&計時器%300<150){
-    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.0　2022夏　by琴房關燈俠<br/><br/>請先調整輸出尺寸，再開始繪製曲線。<br/>如果繪製曲線後，才縮小輸出尺寸，<br/>已繪製的曲線，可能會溢出畫面而無法完整顯示。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處..";
+    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>1.1更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處..";
   }
   else{
-    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.0　2022夏　by琴房關燈俠<br/><br/>請先調整輸出尺寸，再開始繪製曲線。<br/>如果繪製曲線後，才縮小輸出尺寸，<br/>已繪製的曲線，可能會溢出畫面而無法完整顯示。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處...";
+    代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>1.1更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處...";
   }
   最終代碼顯示區域.innerHTML= 代碼;
 }
+
+function 滾動縮放(){
+  if((滾輪狀態>3||滾輪狀態<-3)&&mouse.界內==true&&滑鼠按著==false){
+    
+    輸出尺寸 += (輸出尺寸*滾輪狀態/300);
+
+    
+  if(輸出尺寸<5){
+    輸出尺寸=5;
+    }
+    if(輸出尺寸>32768){
+      輸出尺寸=32768;
+    }
+    尺寸.value=`${Math.floor(輸出尺寸)}`;
+
+    比例尺長度 = 輸出尺寸;
+    document.getElementById('比例尺').style.width = `${比例尺長度}px`;
+
+    原點x = Math.floor(輸出尺寸)/2;
+    原點y = Math.floor(輸出尺寸)/2;
+
+
+  if(原點x%1!==0){
+    原點y = 原點x = (Math.floor(輸出尺寸)+1)/2;
+  }
+  }
+  
+}
+
+
+
+
+
 function loop(){
 
   尺寸最大值();
   if(計時器-更新延遲==2){
-    更新輸出尺寸();
     代碼生成();
   }
   繪製背景();
@@ -1352,14 +1409,32 @@ function loop(){
   }
 
 
-  document.getElementById('t').innerHTML = `輸出尺寸 =`;
-  document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}`;
-  if(curves.length>0){
-    document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
+
+  //處理滾動與否
+
+  if(mouse.界內==true){
+    body.style.overflow='hidden';
   }
+  else{
+    body.style.overflow='scroll';
+  }
+
+  滾動縮放();
+
+
+  焦點=document.activeElement;
+
+  document.getElementById('t').innerHTML = `輸出尺寸 =`;
+  /*document.getElementById('t').innerHTML = `滾輪狀態=${滾輪狀態}，當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}`;
+  if(curves.length>0){
+    document.getElementById('t').innerHTML = `滾輪狀態=${滾輪狀態}，當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
+  }*/
   計時器++;
+  
 
   requestAnimationFrame(loop);
 }
+
+
 
 loop();
