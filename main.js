@@ -71,15 +71,16 @@ window.addEventListener('mousemove',(event) => {
     mouse.y-=0.5;
   }
 
-  if(輸出尺寸 !== height){
-    滑鼠對齊輸出尺寸();
-  }
-  
   mouse.x-=125;
   mouse.y-=125;
   mouse.未修正x-=125;
   mouse.未修正y-=125;
 
+  if(輸出尺寸 !== height){
+    滑鼠對齊輸出尺寸();
+  }
+  
+  
   if(滑鼠按著 == true&&對齊模式 == true){
     對齊函數();
   }
@@ -752,12 +753,14 @@ function 滑鼠對齊輸出尺寸(){
   while(最近點 < mouse.y){
     最近點 += 單位距離;
   }
-  if(最近點 - mouse.y > mouse.y + 單位距離-最近點){
+  if(最近點 - mouse.y > mouse.y + 單位距離 - 最近點){
     mouse.y = 最近點 - 單位距離;
   }
   else{
     mouse.y = 最近點;
   }
+
+  
 }
 
 function 矩形選取(){
@@ -998,22 +1001,24 @@ Curve.prototype.draw虛線 = function(i){
 
 function 點擊誤差(){
   //實作吸附到滑鼠中心
+
+  //取消此功能，因為會導致難處理的狀況（整數與小數模式會出現功能不全）
   
   if(抓著的點%4==0){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p1-(mouse.x)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p2-(mouse.y)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p1-mouse.x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p2-mouse.y*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==1){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p3-(mouse.x)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p4-(mouse.y)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p3-mouse.x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p4-mouse.y*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==2){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p5-(mouse.x)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p6-(mouse.y)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p5-mouse.x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p6-mouse.y*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==3){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p7-(mouse.x)*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p8-(mouse.y)*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p7-mouse.x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p8-mouse.y*輸出尺寸/height)*2)/2;
   }
 }
 
@@ -1023,6 +1028,8 @@ function 拖曳選點(){
 
   if(滑鼠按著 == true && 矩形選取模式 == false){
 
+    點擊誤差x=0;
+    點擊誤差y=0;
 
     for(let i=0;i<被選取到的點.length;i++){
       if(被選取到的點[i]%4==0){
@@ -1346,9 +1353,9 @@ function loop(){
 
 
   document.getElementById('t').innerHTML = `輸出尺寸 =`;
-  document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}`;
+  document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}`;
   if(curves.length>0){
-    document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
+    document.getElementById('t').innerHTML = `當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
   }
   計時器++;
 
