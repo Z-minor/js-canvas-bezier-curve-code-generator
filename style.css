@@ -32,10 +32,11 @@ body {
 #t {
 
   position: absolute;
-  bottom: 70px;
+  top: calc(100vh - 110px);
   height: 40px;
   /*left: 0;
   right: 0;
+  bottom: 70px;
   margin: auto;*/  
   width: 200px;
   left: calc(50vh - 120px);
@@ -48,7 +49,7 @@ body {
 
 input {
   position: absolute;
-  bottom: 74px;
+  top: calc(100vh - 106px);
   height: 30px;
   width: 52px;
   padding:5px;
@@ -79,7 +80,8 @@ input {
   position: absolute;
   top: 120px;
   left: calc(106vh + 40px);
-  right: 120px;
+  /*right: 120px;*/
+  width: calc(100vw - 106vh - 160px);
   height: calc(100vh - 240px);
   min-width: 300px;
   border: 5px solid rgba(0, 0, 0, 1);
@@ -129,8 +131,6 @@ input {
     position: absolute;
     top: calc(50vh - 155px);
     left: calc(623px - (550px - 100vh) / 2);
-    right: calc(50vh - 155px);
-
     height: 310px;
     border: 5px solid rgba(0, 0, 0, 1);
     background-color: rgb(255, 170, 217);
@@ -138,7 +138,8 @@ input {
   }
 
   input {
-    bottom: calc(74px - (550px - 100vh) / 2);
+    top: calc(100vh - 106px + (550px - 100vh) / 2);
+    /*bottom: calc(74px - (550px - 100vh) / 2);*/
   }
 
   #m {
@@ -167,7 +168,8 @@ input {
 
   #t {
 
-    bottom: calc(70px - (550px - 100vh) / 2);
+    top: calc(100vh - 110px + (550px - 100vh) / 2);
+    /*bottom: calc(70px - (550px - 100vh) / 2);*/
 
   }
 
