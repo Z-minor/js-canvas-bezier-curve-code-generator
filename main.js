@@ -1026,25 +1026,33 @@ Curve.prototype.draw虛線 = function(i){
 
 function 點擊誤差(){
   //實作吸附到滑鼠中心
-
-  //取消此功能，因為會導致難處理的狀況（整數與小數模式會出現功能不全）
+  //目的是為了實現對齊功能的必要前置
   
   if(抓著的點%4==0){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p1-mouse.x*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p2-mouse.y*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p1-mouse.未修正x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p2-mouse.未修正y*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==1){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p3-mouse.x*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p4-mouse.y*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p3-mouse.未修正x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p4-mouse.未修正y*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==2){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p5-mouse.x*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p6-mouse.y*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p5-mouse.未修正x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p6-mouse.未修正y*輸出尺寸/height)*2)/2;
   }
   if(抓著的點%4==3){
-    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p7-mouse.x*輸出尺寸/height)*2)/2;
-    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p8-mouse.y*輸出尺寸/height)*2)/2;
+    點擊誤差x=Math.round((curves[Math.floor(抓著的點/4)].p7-mouse.未修正x*輸出尺寸/height)*2)/2;
+    點擊誤差y=Math.round((curves[Math.floor(抓著的點/4)].p8-mouse.未修正y*輸出尺寸/height)*2)/2;
   }
+  
+  if(點擊誤差x%1!==0){
+    點擊誤差x+=0.5;
+  }
+  if(點擊誤差y%1!==0){
+    點擊誤差y+=0.5;
+  }
+  
+  
 }
 
 function 拖曳選點(){
@@ -1053,8 +1061,6 @@ function 拖曳選點(){
 
   if(滑鼠按著 == true && 矩形選取模式 == false){
 
-    點擊誤差x=0;
-    點擊誤差y=0;
 
     for(let i=0;i<被選取到的點.length;i++){
       if(被選取到的點[i]%4==0){
