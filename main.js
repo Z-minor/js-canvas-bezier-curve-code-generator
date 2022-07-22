@@ -1454,10 +1454,10 @@ function loop(){
   焦點=document.activeElement;
 
   document.getElementById('t').innerHTML = `輸出尺寸 =`;
-  document.getElementById('t').innerHTML = `滾輪狀態=${滾輪狀態}，當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}`;
+  /*document.getElementById('t').innerHTML = `滾輪狀態=${滾輪狀態}，當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}`;
   if(curves.length>0){
     document.getElementById('t').innerHTML = `滾輪狀態=${滾輪狀態}，當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
-  }
+  }*/
   計時器++;
   
 
