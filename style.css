@@ -20,6 +20,7 @@ body {
 #標題 {
   position: absolute;
   display: hidden;
+  color: rgba(255, 255, 255, 0);
 }
 
 h1 {
