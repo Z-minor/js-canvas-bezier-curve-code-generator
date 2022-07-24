@@ -2,10 +2,11 @@
 
 
 let 移動端訊息 = document.getElementById('移動端訊息');
-
+let 移動端 = false;
 
 if (isMobile()) {
   移動端訊息.style.display="block";
+  移動端 = true;
 }
 
 function isMobile() {
@@ -200,7 +201,9 @@ let 頁面容器 = document.getElementById('頁面容器');
 頁面容器.addEventListener("animationend", ()=>{頁面容器.className = ""});
 
 function 解除滾動鎖定(){
-  頁面容器.style.overflow='scroll';
+  if(移動端 == false){
+    頁面容器.style.overflow='scroll';
+  }
 }
 
 
