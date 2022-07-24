@@ -535,9 +535,12 @@ function 對齊函數(){
       }
     }
   }
+
+  mouse.x = newX;
+  mouse.y = newY;
   
-  mouse.x = Math.round(newX*2)/2;
-  mouse.y = Math.round(newY*2)/2;
+  //mouse.x = Math.round(newX*2)/2;
+  //mouse.y = Math.round(newY*2)/2;
 
   /*if(整數模式 == false && 對齊功能被觸發 == true){
     if(對齊目標整數與否==true){
@@ -622,15 +625,11 @@ function 鬆開鍵盤(){
 }
 
 function 滑鼠放開(){
-  if(點擊在按鈕處){
-    更新延遲 = 計時器;
-  }
-  滑鼠按著 = false;
   if(矩形選取模式 == true){
     矩形選取();
     矩形選取模式 = false;
   }
-  點擊在按鈕處 = false;
+  
 
 
   if(mouse.按下滑鼠時在界內 == false){
@@ -649,6 +648,8 @@ function 滑鼠放開(){
     }
     移動發生=false;
   }
+
+  滑鼠按著 = false;
 }
 
 
@@ -1398,6 +1399,12 @@ function 滾動縮放(){
   
 }
 
+function 代碼生成需求檢測() {
+  if(點擊在按鈕處 == true){
+    更新延遲 = 計時器;
+    點擊在按鈕處 = false;
+  }
+}
 
 
 
@@ -1407,7 +1414,7 @@ function loop(){
   
 
   尺寸最大值();
-  if(計時器-更新延遲==2){
+  if(計時器-更新延遲==1){
     代碼生成();
   }
   繪製背景();
@@ -1416,6 +1423,7 @@ function loop(){
   }
   拖曳選點();
   繪製曲線();
+  代碼生成需求檢測();
   if(滑鼠按著==true&&mouse.未修正x>=0&&mouse.未修正x<=height){
     代碼生成();
   }
