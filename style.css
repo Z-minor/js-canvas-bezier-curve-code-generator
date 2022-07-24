@@ -116,6 +116,274 @@ input {
   background-color: rgb(255, 238, 205);
 }
 
+#按鈕 div:active {
+  cursor: pointer;
+  background-color: rgb(255, 190, 59);
+}
+
+#畫面變暗 {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(30, 12, 21, 0.911);
+}
+
+#初始化確認視窗 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 300px;
+  width: 600px;
+  margin: auto;
+  border: 5px solid rgba(0, 0, 0, 1);
+  background-color: rgba(255, 0, 140, 1);
+}
+
+#確認文字 {
+  font-size: 30px;
+  text-align: center;
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#按鈕容器 {
+  
+  position: relative;
+  display: flex;
+  justify-content:space-between;
+  top: 55%;
+  left: 50%;
+  width: 65%;
+  height: 60px;
+  transform: translate(-50%,-50%);
+  line-height: 50px;
+}
+
+#取消 {
+  font-size: 40px;
+  text-align: center;
+  border: 5px solid rgba(0, 0, 0, 1);
+  width: 40%;
+  height: 100%;
+}
+
+#確認 {
+  font-size: 40px;
+  text-align: center;
+  border: 5px solid rgba(0, 0, 0, 1);
+  width: 40%;
+  height: 100%;
+}
+
+#取消:hover {
+  cursor: pointer;
+  background-color: rgb(255, 101, 186);
+}
+
+
+#確認:hover {
+  cursor: pointer;
+  background-color: rgb(255, 101, 186);
+}
+
+#取消:active {
+  cursor: pointer;
+  background-color: rgb(194, 3, 108);
+}
+
+#確認:active {
+  cursor: pointer;
+  background-color: rgb(194, 3, 108);
+}
+
+.無 {
+  display: none;
+}
+
+.動畫開啟 {
+  animation-name: 顯現;
+  animation-duration:0.8s;
+}
+
+.背景變暗 {
+  animation-name: 變暗;
+  animation-duration:1.5s;
+}
+
+.動畫關閉 {
+  animation-name: 對話關閉;
+  animation-duration:0.8s;
+}
+
+.背景變亮 {
+  animation-name: 變亮;
+  animation-duration:0.8s;
+}
+
+#歡迎畫面 {
+  font-size: 5vh;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(109, 216, 216);
+  animation-name: 歡迎;
+  animation-duration:3s;
+  animation-fill-mode: forwards;
+}
+
+#啟動中 {
+  text-align: center;
+  line-height: 100vh;
+  animation-name: 取消選取;
+  animation-duration:3s;
+}
+
+
+#歡迎畫面:hover {
+  cursor: progress;
+}
+
+#啟動中:hover {
+  cursor: progress;
+}
+
+#t:hover{
+  cursor: default;
+}
+
+
+@keyframes 取消選取{
+  from{
+    display: block;
+    opacity: 1;
+  }
+  99%{
+    display: block;
+    opacity: 1;
+  }
+  to{
+    display: none;
+    opacity: 0;
+  }
+}
+
+@keyframes 歡迎{
+  from{
+    display: block;
+    opacity: 1;
+    background-color: rgb(42, 42, 42);
+  }
+  30%{
+    background-color: rgb(109, 216, 216);
+  }
+  80%{
+    display: block;
+    opacity: 1;
+  }
+  99%{
+    display: block;
+    opacity: 0;
+  }
+  to{
+    display: none;
+    opacity: 0;
+  }
+}
+
+
+@keyframes 顯現{
+  from{
+    display: none;
+    opacity: 0;
+    transform: translate(0%,20%);
+  }
+  1%{
+    display: block;
+    opacity: 0;
+  }
+  16%{
+    display: block;
+    opacity: 0.6;
+  }
+  25%{
+    display: block;
+    opacity: 0.3;
+  }
+  39%{
+    display: block;
+    opacity: 0;
+  }
+  45%{
+    display: block;
+    opacity: 1;
+  }
+  55%{
+    display: block;
+    opacity: 0.3;
+  }
+  70%{
+    display: block;
+    opacity: 0.9;
+  }
+  to{
+    display: block;
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
+}
+
+@keyframes 變暗{
+  from{
+    display: none;
+    opacity: 0;
+  }
+  1%{
+    display: block;
+    opacity: 0;
+  }
+  to{
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes 對話關閉{
+  from{
+    display: block;
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
+  99%{
+    display: block;
+    opacity: 0;
+  }
+  to{
+    display: none;
+    opacity: 0;
+    transform: translate(0%,20%);
+  }
+}
+
+
+@keyframes 變亮{
+  from{
+    display: block;
+    opacity: 1;
+  }
+  99%{
+    display: block;
+    opacity: 0;
+  }
+  to{
+    display: none;
+    opacity: 0;
+  }
+}
+
 @media (max-height: 782px){
 
   #按鈕 div {

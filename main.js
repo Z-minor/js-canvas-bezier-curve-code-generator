@@ -163,13 +163,26 @@ let 對齊整數或零點五按鈕 = document.getElementById('對齊整數或零
 let 顯示或關閉網格按鈕 = document.getElementById('顯示或關閉網格');
 顯示或關閉網格按鈕.addEventListener('click',網格開關函數);
 let 初始化按鈕 = document.getElementById('初始化');
-初始化按鈕.addEventListener('click',初始化函數);
+初始化按鈕.addEventListener('click',開啟初始化對話框);
 let 尺寸 = document.getElementById('輸出尺寸');
 尺寸.value="100";
 let 最終代碼顯示區域 = document.getElementById('最終代碼');
 最終代碼顯示區域.innerHTML=代碼;
 document.getElementById('比例尺').style.width = `${比例尺長度}px`;
 let body = document.querySelector('body');
+let 初始化確認視窗 = document.getElementById('初始化確認視窗');
+初始化確認視窗.addEventListener("animationend", 隱藏視窗);
+let 畫面變暗 = document.getElementById('畫面變暗');
+畫面變暗.addEventListener("animationend", 隱藏視窗);
+let 確認 = document.getElementById('確認');
+確認.addEventListener('click',重置);
+let 取消 = document.getElementById('取消');
+取消.addEventListener('click',關閉對話框);
+let 啟動中 = document.getElementById('啟動中');
+let 歡迎畫面 = document.getElementById('歡迎畫面');
+歡迎畫面.addEventListener("animationend", 隱藏視窗);
+
+
 
 //滾輪狀態檢測
 
@@ -192,35 +205,63 @@ function 網格開關函數(){
   }
 }
 
-function 初始化函數(){
+function 開啟初始化對話框(){
     點擊在按鈕處 = true;
-  if(confirm('確定要重設畫布嗎？')){
-    對齊舊點按鈕.innerHTML="自動對齊:關"
-    對齊整數或零點五按鈕.innerHTML="貼齊整數/0.5"
-    點擊在按鈕處 = false;
-    尺寸.value="100";
-    輸出尺寸=100;
-    curves = [];
-    lastCurves = [];
-    lastCurves已使用 = false;
-    被選取到的點 = [];
-    整數模式 = true;
-    對齊模式 = false;
-    時光機 = [];
-    時光機索引 = 0;
-    網格開啟 = true;
-    連擊間隔檢測 = 0;
-    上次滑鼠位子x = 0;
-    上次滑鼠位子y = 0;
-    計時器 = 0;
-    比例尺長度 = 輸出尺寸;
-    document.getElementById('比例尺').style.width = `${比例尺長度}px`;
-    代碼生成();
+    初始化確認視窗.style.display = "block";
+    畫面變暗.style.display = "block";
+    初始化確認視窗.className = "動畫開啟";
+    畫面變暗.className = "背景變暗";
+    
+  
+}
 
-    if(原點x%1!==0){
-      原點y = 原點x = (輸出尺寸+1)/2;
-    }
+function 重置(){
+  
+  對齊舊點按鈕.innerHTML="自動對齊:關"
+  對齊整數或零點五按鈕.innerHTML="貼齊整數/0.5"
+  點擊在按鈕處 = false;
+  尺寸.value="100";
+  輸出尺寸=100;
+  curves = [];
+  lastCurves = [];
+  lastCurves已使用 = false;
+  被選取到的點 = [];
+  整數模式 = true;
+  對齊模式 = false;
+  時光機 = [];
+  時光機索引 = 0;
+  網格開啟 = true;
+  連擊間隔檢測 = 0;
+  上次滑鼠位子x = 0;
+  上次滑鼠位子y = 0;
+  計時器 = 0;
+  比例尺長度 = 輸出尺寸;
+  document.getElementById('比例尺').style.width = `${比例尺長度}px`;
+  代碼生成();
+
+  if(原點x%1!==0){
+    原點y = 原點x = (輸出尺寸+1)/2;
   }
+  
+  初始化確認視窗.className = "動畫關閉";
+  畫面變暗.className = "背景變亮";
+
+
+}
+
+function 關閉對話框(){
+  初始化確認視窗.className = "動畫關閉";
+  畫面變暗.className = "背景變亮";
+}
+
+function 隱藏視窗(){
+  if(初始化確認視窗.className == "動畫關閉"){
+    初始化確認視窗.style.display = "none";
+  }
+  if(畫面變暗.className == "背景變亮"){
+    畫面變暗.style.display = "none";
+  }
+  歡迎畫面.style.display="none";
 }
 
 
@@ -1358,15 +1399,19 @@ function 代碼生成(){
 function 空代碼跑馬燈(){
   if(計時器%300<50){
     代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>更新：連擊單一錨點，可以選取整條線段。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處";
+    啟動中.innerHTML="載入中";
   }
   else if(計時器%300>=50&&計時器%300<100){
     代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>更新：連擊單一錨點，可以選取整條線段。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處.";
+    啟動中.innerHTML="載入中.";
   }
   else if(計時器%300>=100&&計時器%300<150){
     代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>更新：連擊單一錨點，可以選取整條線段。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處..";
+    啟動中.innerHTML="載入中..";
   }
   else{
     代碼="Js canvas貝茲曲線所見即所得工具<br/><br/>版本1.1　2022夏　by琴房關燈俠<br/><br/>更新：新增了滾輪縮放功能。<br/>使用滑鼠滾輪，可以縮放畫布。<br/><br/>更新：連擊單一錨點，可以選取整條線段。<br/><br/>新增的線段，將於當前被選取的控制點旁生成。<br/>點擊空白處，可以使用矩形選取。<br/><br/>左下角白色橫條為比例尺，顯示所選輸出尺寸的實際寬度。<br/><br/>內置代碼修正功能，直線線段與二次貝茲曲線，將轉換為對應代碼。<br/><br/><br/><br/>代碼將生成於此處...";
+    啟動中.innerHTML="載入中..";
   }
   最終代碼顯示區域.innerHTML= 代碼;
 }
