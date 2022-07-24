@@ -16,6 +16,24 @@ body {
 
 }
 
+#移動端訊息 {
+  position: absolute;
+  display: none;
+  font-size: 1.8vh;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(54, 54, 54);
+}
+
+#不支援 {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  text-align: center;
+  color: rgb(147, 253, 253);
+}
+
 
 #標題 {
   position: absolute;

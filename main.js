@@ -1,6 +1,19 @@
+//檢查是否為移動端
+
+
+let 移動端訊息 = document.getElementById('移動端訊息');
+
+
+if (isMobile()) {
+  移動端訊息.style.display="block";
+}
+
+function isMobile() {
+  let flag = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return flag;
+}
+
 //初始化畫布
-
-
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
