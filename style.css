@@ -16,6 +16,60 @@ body {
 
 }
 
+
+#標題 {
+  position: absolute;
+  display: hidden;
+}
+
+h1 {
+  color: rgba(255, 255, 255, 0);
+}
+
+#頁面容器 {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.刷新 {
+  animation-name: 刷新;
+  animation-duration:2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.27,.09,.24,1.03)
+}
+
+@keyframes 刷新{
+  from{
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
+  50%{
+    opacity: 0;
+    transform: translate(0%,80%);
+  }
+  51%{
+    opacity: 0;
+    transform: translate(200%,100%);
+  }
+  52%{
+    opacity: 0;
+    transform: translate(200%,-100%);
+  }
+  53%{
+    opacity: 0;
+    transform: translate(0%,-80%);
+  }
+  to{
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
+}
+
+
 #m {  
 
   position: absolute;
@@ -179,7 +233,6 @@ input {
   border: 0px solid rgba(0, 0, 0, 1);
   animation-name: 上入;
   animation-duration:4s;
-  animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(.56,0,.68,1.23);
 }
 
@@ -188,14 +241,17 @@ input {
   from{
     opacity: 0;
     transform: translate(0%,-70%);
+    height: calc(100vh - 0px);
   }
   60%{
     opacity: 0;
     transform: translate(0%,-70%);
+    height: calc(100vh - 0px);
   }
   to{
     opacity: 1;
     transform: translate(0%,0%);
+    height: calc(100vh - 240px);
   }
 }
 
@@ -223,7 +279,8 @@ input {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(30, 12, 21, 0.911);
+  background-color: rgba(30, 12, 21, 0.9);
+  transform: translate(0%,-100%);
 }
 
 #初始化確認視窗 {
@@ -563,6 +620,24 @@ input {
     top: calc(100vh - 110px + (550px - 100vh) / 2);
     /*bottom: calc(70px - (550px - 100vh) / 2);*/
 
+  }
+
+  @keyframes 上入{
+    from{
+      opacity: 0;
+      transform: translate(0%,-70%);
+      height: 550px;
+    }
+    60%{
+      opacity: 0;
+      transform: translate(0%,-70%);
+      height: 550px;
+    }
+    to{
+      opacity: 1;
+      transform: translate(0%,0%);
+      height: 310px;;
+    }
   }
 
 }

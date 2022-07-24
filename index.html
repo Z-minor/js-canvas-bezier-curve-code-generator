@@ -3,33 +3,40 @@
   <head>
     <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
     <meta charset="utf-8">
+    <meta name=”description” content=”a wysiwyg editor.“/>
     <title>bezier curve tool for js canvas</title>
     <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
-    <div id="比例尺"></div>
-    <div id="m">
-    <canvas></canvas>
+    <div id="標題"><h1>Js canvas貝茲曲線所見即所得工具。</h1></div>
+    <div id="頁面容器">
+      <div id="比例尺"></div>
+      <div id="m">
+        <canvas></canvas>
+      </div>
+      <div id="t"></div>
+      <div id="按鈕">
+        <div id="新增線段">新增線段</div>
+        <div id="刪除線段">刪除線段</div>
+        <div id="復原">復原</div>
+        <div id="重做">重做</div>
+        <div id="自動對齊舊點">自動對齊:關</div>
+        <div id="對齊整數或零點五">貼齊整數/0.5</div>
+        <div id="顯示或關閉網格">顯示/關閉網格</div>
+        <div id="初始化">初始化</div>
+      </div>
+      <div id="可填數值">
+        <input id="原點變數名稱x" type="text">
+        <input id="原點變數名稱y" type="text">
+        <input id="縮放比例" type="text">
+      </div>
+      <div id="最終代碼"  spellcheck="false">代碼將生成於此處...</div>
+      <input id="輸出尺寸" type="text" name="" oninput="value=value.replace(/[^\d]/g,'')">
+      <div id="歡迎畫面">
+        <div id="啟動中">載入中</div>
+      </div>
     </div>
-    <div id="t"></div>
-    <div id="按鈕">
-      <div id="新增線段">新增線段</div>
-      <div id="刪除線段">刪除線段</div>
-      <div id="復原">復原</div>
-      <div id="重做">重做</div>
-      <div id="自動對齊舊點">自動對齊:關</div>
-      <div id="對齊整數或零點五">貼齊整數/0.5</div>
-      <div id="顯示或關閉網格">顯示/關閉網格</div>
-      <div id="初始化">初始化</div>
-    </div>
-    <div id="可填數值">
-      <input id="原點變數名稱x" type="text">
-      <input id="原點變數名稱y" type="text">
-      <input id="縮放比例" type="text">
-    </div>
-    <div id="最終代碼"  spellcheck="false">代碼將生成於此處...</div>
-    <input id="輸出尺寸" type="text" name="" oninput="value=value.replace(/[^\d]/g,'')">
     <div id="畫面變暗" class="無"></div>
     <div id="初始化確認視窗" class="無">
       <div id="確認文字">確定要清空並重設畫布嗎？</div>
@@ -38,9 +45,7 @@
         <div id="確認">確定</div>
       </div>
     </div>
-    <div id="歡迎畫面">
-      <div id="啟動中">載入中</div>
-    </div>
+    
     <script src="main.js"></script>
   </body>
 </html>

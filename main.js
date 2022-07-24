@@ -139,7 +139,8 @@ let 焦點;
 let 連擊間隔檢測 = 0;
 let 上次滑鼠位子x = 0;
 let 上次滑鼠位子y = 0;
-
+let 重置延遲 = 50;
+let 重置倒數 = 0;
 
 //125= 畫布距離頁面邊界距離
 
@@ -175,12 +176,19 @@ let 初始化確認視窗 = document.getElementById('初始化確認視窗');
 let 畫面變暗 = document.getElementById('畫面變暗');
 畫面變暗.addEventListener("animationend", 隱藏視窗);
 let 確認 = document.getElementById('確認');
-確認.addEventListener('click',重置);
+確認.addEventListener('click',重置開始);
 let 取消 = document.getElementById('取消');
 取消.addEventListener('click',關閉對話框);
 let 啟動中 = document.getElementById('啟動中');
 let 歡迎畫面 = document.getElementById('歡迎畫面');
 歡迎畫面.addEventListener("animationend", 隱藏視窗);
+最終代碼顯示區域.addEventListener("animationend", 解除滾動鎖定);
+let 頁面容器 = document.getElementById('頁面容器');
+頁面容器.addEventListener("animationend", ()=>{頁面容器.className = ""});
+
+function 解除滾動鎖定(){
+  頁面容器.style.overflow='scroll';
+}
 
 
 
@@ -206,16 +214,34 @@ function 網格開關函數(){
 }
 
 function 開啟初始化對話框(){
-    點擊在按鈕處 = true;
-    初始化確認視窗.style.display = "block";
-    畫面變暗.style.display = "block";
-    初始化確認視窗.className = "動畫開啟";
-    畫面變暗.className = "背景變暗";
+  點擊在按鈕處 = true;
+  初始化確認視窗.style.display = "block";
+  畫面變暗.style.display = "block";
+  初始化確認視窗.className = "動畫開啟";
+  畫面變暗.className = "背景變暗";
     
   
 }
 
-function 重置(){
+function 重置開始(){
+
+  重置倒數 = 1;
+  初始化確認視窗.className = "動畫關閉2";
+  畫面變暗.className = "背景變亮";
+  頁面容器.className = "刷新";
+  
+}
+
+function 重置檢測(){
+  if(重置倒數 > 0){
+    重置倒數++;
+    if(重置倒數 == 重置延遲){
+      重置結束();
+    }
+  }
+}
+
+function 重置結束(){
   
   對齊舊點按鈕.innerHTML="自動對齊:關"
   對齊整數或零點五按鈕.innerHTML="貼齊整數/0.5"
@@ -235,6 +261,7 @@ function 重置(){
   上次滑鼠位子x = 0;
   上次滑鼠位子y = 0;
   計時器 = 0;
+  重置倒數 = 0;
   比例尺長度 = 輸出尺寸;
   document.getElementById('比例尺').style.width = `${比例尺長度}px`;
   代碼生成();
@@ -242,11 +269,6 @@ function 重置(){
   if(原點x%1!==0){
     原點y = 原點x = (輸出尺寸+1)/2;
   }
-  
-  初始化確認視窗.className = "動畫關閉2";
-  畫面變暗.className = "背景變亮";
-
-
 }
 
 function 關閉對話框(){
@@ -1532,8 +1554,10 @@ function loop(){
   if(curves.length>0){
     document.getElementById('t').innerHTML = `滾輪狀態=${滾輪狀態}，當前畫布長寬=${width}px，整數模式=${整數模式}，對齊模式=${對齊模式}，mouse.x=${mouse.x}，mouse.y=${mouse.y}，mouse.未修正x=${mouse.未修正x}，mouse.未修正y=${mouse.未修正y}，p1=${curves[0].p1}，p2=${curves[0].p2}，p3=${curves[0].p3}，p4=${curves[0].p4}，p5=${curves[0].p5}，p6=${curves[0].p6}，p7=${curves[0].p7}，p8=${curves[0].p8}`;
   }*/
+
+
+  重置檢測();
   計時器++;
-  
 
   requestAnimationFrame(loop);
 }
