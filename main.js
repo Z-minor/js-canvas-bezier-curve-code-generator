@@ -243,7 +243,7 @@ function 重置(){
     原點y = 原點x = (輸出尺寸+1)/2;
   }
   
-  初始化確認視窗.className = "動畫關閉";
+  初始化確認視窗.className = "動畫關閉2";
   畫面變暗.className = "背景變亮";
 
 
@@ -255,7 +255,7 @@ function 關閉對話框(){
 }
 
 function 隱藏視窗(){
-  if(初始化確認視窗.className == "動畫關閉"){
+  if(初始化確認視窗.className == "動畫關閉" || 初始化確認視窗.className == "動畫關閉2"){
     初始化確認視窗.style.display = "none";
   }
   if(畫面變暗.className == "背景變亮"){

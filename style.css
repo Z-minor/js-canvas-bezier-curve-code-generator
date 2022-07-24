@@ -26,7 +26,26 @@ body {
   width: calc(100vh - 240px);
   min-width: 310px;
   border: 5px solid rgba(0, 0, 0, 1);
+  animation-name: 左入;
+  animation-duration:4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 
+}
+
+@keyframes 左入{
+  from{
+    opacity: 0;
+    transform: translate(-50%,0%);
+  }
+  60%{
+    opacity: 0;
+    transform: translate(-50%,0%);
+  }
+  to{
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
 }
 
 #t {
@@ -34,17 +53,32 @@ body {
   position: absolute;
   top: calc(100vh - 110px);
   height: 40px;
-  /*left: 0;
-  right: 0;
-  bottom: 70px;
-  margin: auto;*/  
   width: 200px;
   left: calc(50vh - 120px);
   border: 0px solid rgba(0, 0, 0, 1);
   display: flex;
   justify-content: center;
   align-items: center;
+  animation-name: 下入;
+  animation-duration:4.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
 
+
+@keyframes 下入{
+  from{
+    opacity: 0;
+    transform: translate(0%,100%);
+  }
+  60%{
+    opacity: 0;
+    transform: translate(0%,100%);
+  }
+  to{
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
 }
 
 input {
@@ -61,7 +95,26 @@ input {
   justify-content: center;
   align-items: center;
   font-family: 'Noto Serif TC', serif;
+  animation-name: 下入2;
+  animation-duration:4.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
 
+
+@keyframes 下入2{
+  from{
+    opacity: 0;
+    transform: translate(0%,150%);
+  }
+  60%{
+    opacity: 0;
+    transform: translate(0%,150%);
+  }
+  to{
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
 }
 
 #可填數值 input{
@@ -88,7 +141,32 @@ input {
   background-color: rgb(255, 170, 217);
   font-family: 'Noto Serif TC', serif;
   overflow: scroll;
+  animation-name: 右入;
+  animation-duration:4.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
+
+
+@keyframes 右入{
+  from{
+    opacity: 0;
+    transform: translate(50%,0%);
+  }
+  60%{
+    opacity: 0;
+    transform: translate(50%,0%);
+  }
+  to{
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
+}
+
+
+
+
+
 
 #按鈕 {
   position: absolute;
@@ -99,6 +177,26 @@ input {
   height: calc(100vh - 240px);
   left: calc(100vh - 80px);
   border: 0px solid rgba(0, 0, 0, 1);
+  animation-name: 上入;
+  animation-duration:4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.56,0,.68,1.23);
+}
+
+
+@keyframes 上入{
+  from{
+    opacity: 0;
+    transform: translate(0%,-70%);
+  }
+  60%{
+    opacity: 0;
+    transform: translate(0%,-70%);
+  }
+  to{
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
 }
 
 #按鈕 div {
@@ -217,11 +315,19 @@ input {
 .動畫關閉 {
   animation-name: 對話關閉;
   animation-duration:0.8s;
+  animation-fill-mode: forwards;
+}
+
+.動畫關閉2 {
+  animation-name: 對話關閉2;
+  animation-duration:0.8s;
+  animation-fill-mode: forwards;
 }
 
 .背景變亮 {
   animation-name: 變亮;
   animation-duration:0.8s;
+  animation-fill-mode: forwards;
 }
 
 #歡迎畫面 {
@@ -367,6 +473,24 @@ input {
     transform: translate(0%,20%);
   }
 }
+
+@keyframes 對話關閉2{
+  from{
+    display: block;
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
+  99%{
+    display: block;
+    opacity: 0;
+  }
+  to{
+    display: none;
+    opacity: 0;
+    transform: translate(0%,-50%);
+  }
+}
+
 
 
 @keyframes 變亮{
