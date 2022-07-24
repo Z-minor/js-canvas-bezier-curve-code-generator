@@ -57,8 +57,8 @@ let mouse = {
 }
 
 window.addEventListener('mousemove',(event) => {
-  mouse.未修正x = mouse.x = event.clientX;
-  mouse.未修正y = mouse.y = event.clientY;
+  mouse.未修正x = mouse.x = event.clientX + 頁面容器.scrollLeft;
+  mouse.未修正y = mouse.y = event.clientY + 頁面容器.scrollTop;
   mouse.界內 = true;
 
   if(視窗高度<550){
@@ -1579,6 +1579,7 @@ function loop(){
 
   requestAnimationFrame(loop);
 }
+
 
 
 
