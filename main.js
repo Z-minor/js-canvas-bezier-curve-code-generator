@@ -691,7 +691,7 @@ function 更新輸出尺寸(){
   document.getElementById('比例尺').style.width = `${比例尺長度}px`;
 }
 
-function 按下鍵盤(){
+function 按下鍵盤(e){
   更新延遲=計時器;
   檢測鍵盤按鍵(e);
 }
