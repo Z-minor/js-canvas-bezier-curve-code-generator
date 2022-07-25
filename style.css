@@ -97,7 +97,7 @@ h1 {
   animation-name: 刷新2;
   animation-duration:2s;
   animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out
+  animation-timing-function: cubic-bezier(.27,.09,.24,1.03);
 }
 
 @keyframes 刷新2{
@@ -333,6 +333,7 @@ input {
 }
 
 #按鈕 div {
+  overflow: hidden;
   background-color: rgb(255, 216, 144);
   border: 5px solid rgb(0, 0, 0);
   height: calc((100vh - 240px)/12);
@@ -340,6 +341,21 @@ input {
   font-size: calc(2.3vh - 6px);
   text-align:center;
   line-height: calc((100vh - 340px)/12);
+  animation-name: 展開;
+  animation-duration:4s;
+  animation-timing-function: cubic-bezier(.56,0,.68,1.23);
+}
+
+@keyframes 展開{
+  from{
+    
+  }
+  60%{
+    height: 0px;
+  }
+  to{
+    height: calc((100vh - 240px)/12);
+  }
 }
 
 #按鈕 div:hover {
@@ -438,6 +454,16 @@ input {
 
 .動畫開啟 {
   animation-name: 顯現;
+  animation-duration:0.9s;
+}
+
+.動畫開啟2 {
+  animation-name: 顯現2;
+  animation-duration:1s;
+}
+
+.動畫開啟3 {
+  animation-name: 顯現3;
   animation-duration:1s;
 }
 
@@ -454,6 +480,30 @@ input {
 
 .動畫關閉2 {
   animation-name: 對話關閉2;
+  animation-duration:0.8s;
+  animation-fill-mode: forwards;
+}
+
+.動畫關閉3 {
+  animation-name: 對話關閉3;
+  animation-duration:0.8s;
+  animation-fill-mode: forwards;
+}
+
+.動畫關閉4 {
+  animation-name: 對話關閉4;
+  animation-duration:0.8s;
+  animation-fill-mode: forwards;
+}
+
+.動畫關閉5 {
+  animation-name: 對話關閉5;
+  animation-duration:0.8s;
+  animation-fill-mode: forwards;
+}
+
+.動畫關閉6 {
+  animation-name: 對話關閉6;
   animation-duration:0.8s;
   animation-fill-mode: forwards;
 }
@@ -535,7 +585,7 @@ input {
 }
 
 
-@keyframes 顯現{
+@keyframes 顯現2{
   from{
     display: none;
     opacity: 0;
@@ -567,6 +617,89 @@ input {
   }
   to{
     opacity: 1;
+  }
+}
+
+@keyframes 顯現{
+  from{
+    display: none;
+    opacity: 0;
+    transform: translate(0%,20%);
+  }
+  1%{
+    display: block;
+    opacity: 0;
+  }
+  16%{
+    display: block;
+    opacity: 0.6;
+  }
+  25%{
+    display: block;
+    opacity: 0.3;
+  }
+  39%{
+    display: block;
+    opacity: 0;
+  }
+  45%{
+    display: block;
+    opacity: 1;
+  }
+  55%{
+    display: block;
+    opacity: 0.3;
+  }
+  70%{
+    display: block;
+    opacity: 0.9;
+  }
+  to{
+    display: block;
+    opacity: 1;
+    transform: translate(0%,0%);
+  }
+}
+
+@keyframes 顯現3{
+  from{
+    overflow: hidden;
+    display: none;
+    opacity: 1;
+    height: 0px;
+    width: 0px;
+  }
+  1%{
+    display: block;
+    opacity: 1;
+    height: 0px;
+    width: 0px;
+  }
+  10%{
+    opacity: 0.6;
+    width: 0px;
+  }
+  25%{
+    opacity: 0.3;
+  }
+  39%{
+    opacity: 0;
+    width: 600px;
+  }
+  45%{
+    opacity: 1;
+    height: 0px;
+  }
+  55%{
+    opacity: 0.3;
+  }
+  70%{
+    opacity: 0.9;
+  }
+  to{
+    opacity: 1;
+    height: 300px;
+    width: 600px;
   }
 }
 
@@ -619,6 +752,124 @@ input {
   }
 }
 
+@keyframes 對話關閉3{
+  from{
+    display: block;
+    opacity: 1;
+    transform: rotate(0turn);
+  }
+  99%{
+    display: block;
+    opacity: 0;
+  }
+  to{
+    display: none;
+    opacity: 0;
+    transform: rotate(0.04turn) scale(1.1);
+  }
+}
+
+@keyframes 對話關閉4{
+  from{
+    display: block;
+    opacity: 1;
+    transform: rotate(0turn);
+  }
+  99%{
+    display: block;
+    opacity: 0;
+  }
+  to{
+    display: none;
+    opacity: 0;
+    transform: rotate(-0.4turn) scale(0.8);
+  }
+}
+
+@keyframes 對話關閉5{
+  from{
+    overflow: hidden;
+    opacity: 1;
+    height: 300px;
+    width: 600px;
+  }
+  99%{
+    display: block;
+    opacity: 1;
+    
+  }
+  90%{
+    opacity: 0.6;
+  }
+  75%{
+    opacity: 0.3;
+  }
+  60%{
+    opacity: 0;
+    width: 600px;
+  }
+  55%{
+    opacity: 1;
+    height: 0px;
+  }
+  45%{
+    opacity: 0.3;
+  }
+  30%{
+    opacity: 0.9;
+  }
+  to{
+    overflow: hidden;
+    display: none;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+}
+
+@keyframes 對話關閉6{
+  from{
+    overflow: hidden;
+    opacity: 1;
+    height: 300px;
+    width: 600px;
+    border-width: 5px ;
+  }
+  99%{
+    display: block;
+    opacity: 1;
+    
+  }
+  90%{
+    opacity: 0.1;
+  }
+  75%{
+    opacity: 0.3;
+  }
+  60%{
+    opacity: 0;
+    width: 600px;
+    border-width: 5px;
+  }
+  55%{
+    opacity: 1;
+    height: 0px;
+  }
+  45%{
+    opacity: 0.3;
+  }
+  30%{
+    opacity: 0.9;
+  }
+  to{
+    overflow: hidden;
+    display: none;
+    opacity: 0;
+    height: 0;
+    width: 3000px;
+    border-width: 0px;
+  }
+}
 
 
 @keyframes 變亮{
