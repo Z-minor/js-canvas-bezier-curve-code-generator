@@ -125,8 +125,8 @@ if(原點x%1!==0){
 }
 
 let 滑鼠按著 = false;
-let 路徑頭尾圓點半徑 = 4;
-let 貝茲控制點圓點半徑 = 3;
+let 路徑頭尾圓點半徑 = 5.5;
+let 貝茲控制點圓點半徑 = 4.5;
 let keyN已被按下 = false;
 let 矩形選取模式 = false;
 let 移動前原始座標x;
@@ -1122,20 +1122,20 @@ Curve.prototype.drawCurve = function(){
   ctx.beginPath();
   ctx.arc(this.p1*height/輸出尺寸, this.p2*height/輸出尺寸, 路徑頭尾圓點半徑, 0, 2 * Math.PI);
   ctx.arc(this.p7*height/輸出尺寸, this.p8*height/輸出尺寸, 路徑頭尾圓點半徑, 0, 2 * Math.PI);
-  ctx.fillStyle = "hsla(30,100%,50%,0.5)"
+  ctx.fillStyle = "hsla(45,100%,50%,1)"
   ctx.fill();
 
 
   ctx.beginPath();
   ctx.arc(this.p3*height/輸出尺寸, this.p4*height/輸出尺寸, 貝茲控制點圓點半徑, 0, 2 * Math.PI);
   ctx.arc(this.p5*height/輸出尺寸, this.p6*height/輸出尺寸, 貝茲控制點圓點半徑, 0, 2 * Math.PI);
-  ctx.fillStyle = "hsla(0,100%,50%,0.5)"
+  ctx.fillStyle = "hsla(30,100%,50%,1)"
   ctx.fill();
 
 
   ctx.lineWidth = 0.3;
   ctx.beginPath();
-  ctx.strokeStyle = "hsla(0,100%,0%,1)"
+  ctx.strokeStyle = "hsla(30,100%,0%,1)"
   ctx.moveTo(this.p1*height/輸出尺寸, this.p2*height/輸出尺寸);
   ctx.lineTo(this.p3*height/輸出尺寸, this.p4*height/輸出尺寸);
   ctx.moveTo(this.p7*height/輸出尺寸, this.p8*height/輸出尺寸);
