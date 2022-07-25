@@ -199,7 +199,8 @@ let 歡迎畫面 = document.getElementById('歡迎畫面');
 歡迎畫面.addEventListener("animationend", 隱藏視窗);
 最終代碼顯示區域.addEventListener("animationend", 解除滾動鎖定);
 let 頁面容器 = document.getElementById('頁面容器');
-頁面容器.addEventListener("animationend", ()=>{頁面容器.className = ""});
+頁面容器.addEventListener("animationstart", ()=>{body.style.overflow = "hidden"});
+頁面容器.addEventListener("animationend", ()=>{頁面容器.className = "";body.style.overflow = "scroll"});
 
 function 解除滾動鎖定(){
   if(移動端 == false){
@@ -1581,14 +1582,14 @@ function loop(){
 
 
   //處理滾動與否
-
-  if(mouse.界內==true){
-    body.style.overflow='hidden';
+  if(頁面容器.className==""){
+    if(mouse.界內==true){
+      body.style.overflow='hidden';
+    }
+    else{
+      body.style.overflow='scroll';
+    }
   }
-  else{
-    body.style.overflow='scroll';
-  }
-
   滾動縮放();
 
 
