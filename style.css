@@ -93,6 +93,59 @@ h1 {
   }
 }
 
+.刷新2 {
+  animation-name: 刷新2;
+  animation-duration:2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out
+}
+
+@keyframes 刷新2{
+  from{
+    opacity: 1;
+    transform: rotate(0turn);
+  }
+  40%{
+    opacity: 0;
+    transform: rotate(0.4turn);
+  }
+  60%{
+    opacity: 0;
+    transform: rotate(-0.4turn);
+  }
+  to{
+    opacity: 1;
+    transform: rotate(0turn);
+  }
+}
+
+.刷新3 {
+  animation-name: 刷新3;
+  animation-duration:2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out
+}
+
+@keyframes 刷新3{
+  from{
+    opacity: 1;
+  }
+  
+  48%{
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  60%{
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  to{
+    opacity: 1;
+    transform: rotate(0turn);
+    transform: scale(1);
+  }
+}
+
 
 #m {  
 
@@ -385,7 +438,7 @@ input {
 
 .動畫開啟 {
   animation-name: 顯現;
-  animation-duration:0.8s;
+  animation-duration:1s;
 }
 
 .背景變暗 {
@@ -492,34 +545,28 @@ input {
     display: block;
     opacity: 0;
   }
-  16%{
-    display: block;
-    opacity: 0.6;
+  
+  60%{
+    opacity: 0.7;
+    transform: scale(1.2) rotate(0.01turn);
   }
-  25%{
-    display: block;
+  75%{
+    transform: rotate(-0.02turn);
     opacity: 0.3;
   }
-  39%{
-    display: block;
-    opacity: 0;
+  85%{
+    transform: rotate(0.01turn);
+    opacity: 0.8;
   }
-  45%{
-    display: block;
-    opacity: 1;
-  }
-  55%{
-    display: block;
+  90%{
+    transform: rotate(-0.005turn);
     opacity: 0.3;
   }
-  70%{
-    display: block;
-    opacity: 0.9;
+  95%{
+    transform: translate(0%,0%) scale(1) rotate(0turn);
   }
   to{
-    display: block;
     opacity: 1;
-    transform: translate(0%,0%);
   }
 }
 
