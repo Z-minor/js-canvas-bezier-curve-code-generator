@@ -225,18 +225,33 @@ h1 {
     left: 120px;
   }
   20%{
+    opacity: 0.2;
     width: 0;
     left: 50vh;
+  }
+  25%{
+    opacity: 1;
   }
   30%{
     top: 120px;
     height: calc(100vh - 240px);
   }
+  35%{
+    opacity: 1;
+  }
   40%{
+    opacity: 0.2;
     top: calc(50vh - 2.5px);
     height: 0px;
   }
+  45%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
   60%{
+    opacity: 1;
     width: 0;
     left: 50vh;
   }
@@ -407,6 +422,7 @@ input {
   }
 }
 
+
 @keyframes 右伸縮{
   from{
     min-width: 0px;
@@ -416,20 +432,35 @@ input {
     width: calc(100vw - 106vh - 160px);
     left: calc(106vh + 40px);
   }
+  45%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
   40%{
+    opacity: 0.2;
     top: calc(50vh - 2.5px);
     height: 0px;
+  }
+  35%{
+    opacity: 1;
   }
   30%{
     top: 120px;
     height: calc(100vh - 240px);
   }
+  25%{
+    opacity: 1;
+  }
   20%{
+    opacity: 0.2;
     width: 0;
     left: calc(50vw + 53vh + 40px);
   }
 
   60%{
+    opacity: 1;
     width: 0;
     left: calc(50vw + 53vh + 40px);
   }
@@ -561,20 +592,25 @@ input {
     width: calc(6vh + 80px);
   }
   15%{
+    opacity: 0.1;
     top: calc(50vh - 2.5px);
     height: 0px;
   }
+  20%{
+    opacity: 0.6;
+  }
   35%{
+    opacity: 1;
     width: calc(6vh + 80px);
   }
   40%{
-    opacity: 1;
+    opacity: 0.2;
     width: 0;
     opacity: 1;
     transform: scale(1);
   }
   43%{
-    opacity: 0;
+    opacity: 0.8;
     transform: scale(0);
   }
   57%{
@@ -582,19 +618,24 @@ input {
     transform: scale(0);
   }
   60%{
-    opacity: 1;
+    opacity: 0.8;
     width: 0;
     transform: scale(1);
   }
   65%{
+    opacity: 0.2;
     width: calc(6vh + 80px);
     left: calc(106vh + 40px);
+  }
+  68%{
+    opacity: 1;
   }
   85%{
     top: calc(50vh - 2.5px);
     height: 0px;
   }
   to{
+    opacity: 1;
     height: calc((100vh - 240px)/12);
     opacity: 1;
   }
@@ -1036,7 +1077,7 @@ input {
   to{
     display: none;
     opacity: 0;
-    transform: rotate(-0.4turn) scale(0.8);
+    transform: rotate(-0.3turn) scale(0.8);
   }
 }
 
