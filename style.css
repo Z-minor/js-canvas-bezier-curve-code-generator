@@ -591,26 +591,31 @@ input {
     height: calc((100vh - 240px)/12);
     width: calc(6vh + 80px);
   }
-  15%{
+  11%{
     opacity: 0.1;
     top: calc(50vh - 2.5px);
     height: 0px;
   }
+  15%{
+    opacity: 1;
+    top: calc(50vh - 2.5px);
+    height: 0px;
+  }
   20%{
-    opacity: 0.6;
+    opacity: 0;
   }
   35%{
-    opacity: 1;
+    opacity: 0.2;
     width: calc(6vh + 80px);
   }
   40%{
-    opacity: 0.2;
+    opacity: 1;
     width: 0;
     opacity: 1;
     transform: scale(1);
   }
   43%{
-    opacity: 0.8;
+    opacity: 0;
     transform: scale(0);
   }
   57%{
@@ -618,21 +623,28 @@ input {
     transform: scale(0);
   }
   60%{
-    opacity: 0.8;
+    opacity: 0;
     width: 0;
     transform: scale(1);
   }
   65%{
-    opacity: 0.2;
+    opacity: 1;
     width: calc(6vh + 80px);
     left: calc(106vh + 40px);
   }
   68%{
+    opacity: 0;
+  }
+  72%{
     opacity: 1;
   }
   85%{
+    opacity: 1;
     top: calc(50vh - 2.5px);
     height: 0px;
+  }
+  92%{
+    opacity: 0;
   }
   to{
     opacity: 1;
