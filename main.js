@@ -164,6 +164,7 @@ document.addEventListener('mouseup', 滑鼠放開);
 //document.addEventListener('click', createNewCurve);
 document.addEventListener('keydown', 按下鍵盤);
 document.addEventListener('keyup', 鬆開鍵盤);
+let 按鈕 = document.getElementById('按鈕');
 let 新增線段按鈕 = document.getElementById('新增線段');
 新增線段按鈕.addEventListener("click", createNewCurve);
 let 刪除線段按鈕 = document.getElementById('刪除線段');
@@ -180,8 +181,11 @@ let 顯示或關閉網格按鈕 = document.getElementById('顯示或關閉網格
 顯示或關閉網格按鈕.addEventListener('click',網格開關函數);
 let 初始化按鈕 = document.getElementById('初始化');
 初始化按鈕.addEventListener('click',開啟初始化對話框);
+初始化按鈕.addEventListener("animationend", ()=>{按鈕.className = ""});
+m.addEventListener("animationend", ()=>{m.className = "m待機狀態"});
 let 尺寸 = document.getElementById('輸出尺寸');
 尺寸.value="100";
+尺寸.addEventListener("animationend", ()=>{尺寸.className = "";});
 let 最終代碼顯示區域 = document.getElementById('最終代碼');
 最終代碼顯示區域.innerHTML=代碼;
 document.getElementById('比例尺').style.width = `${比例尺長度}px`;
@@ -201,6 +205,7 @@ let 歡迎畫面 = document.getElementById('歡迎畫面');
 let 頁面容器 = document.getElementById('頁面容器');
 頁面容器.addEventListener("animationstart", ()=>{body.style.overflow = "hidden"});
 頁面容器.addEventListener("animationend", ()=>{頁面容器.className = "";body.style.overflow = "scroll"});
+最終代碼顯示區域.addEventListener("animationend", ()=>{最終代碼顯示區域.className = ""});
 
 function 解除滾動鎖定(){
   if(移動端 == false){
@@ -264,6 +269,10 @@ function 重置開始(){
   else{
     頁面容器.className = "刷新3";
     初始化確認視窗.className = "動畫關閉6";
+    最終代碼顯示區域.className = "最終代碼伸縮消失";
+    按鈕.className = '按鈕伸縮消失';
+    m.className = 'm伸縮消失';
+    尺寸.className = '尺寸伸縮消失';
   }
   重置計數++;
 }

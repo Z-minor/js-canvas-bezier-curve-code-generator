@@ -97,7 +97,7 @@ h1 {
   animation-name: 刷新2;
   animation-duration:2s;
   animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(.27,.09,.24,1.03);
+  animation-timing-function: cubic-bezier(.56,-0.01,.5,1)
 }
 
 @keyframes 刷新2{
@@ -107,11 +107,11 @@ h1 {
   }
   40%{
     opacity: 0;
-    transform: rotate(0.4turn);
+    transform: rotate(0.3turn);
   }
   60%{
     opacity: 0;
-    transform: rotate(-0.4turn);
+    transform: rotate(-0.3turn);
   }
   to{
     opacity: 1;
@@ -120,8 +120,8 @@ h1 {
 }
 
 .刷新3 {
-  animation-name: 刷新3;
-  animation-duration:2s;
+  animation-name: 刷新33;
+  animation-duration:3s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out
 }
@@ -131,24 +131,45 @@ h1 {
     opacity: 1;
   }
   
+  10%{
+    opacity: 1;
+  }
+  14%{
+    opacity: 0.5;
+  }
+  21%{
+    opacity: 1;
+  }
+  44%{
+    opacity: 1;
+  }
   48%{
-    opacity: 0;
-    transform: scale(0.9);
+    opacity: 0.1;
+  }
+  52%{
+    opacity: 0.6;
   }
   60%{
-    opacity: 0;
-    transform: scale(1.1);
+    opacity: 0.3;
+  }
+  70%{
+    opacity: 0.8;
+  }
+  75%{
+    opacity: 0.5;
+  }
+  80%{
+    opacity: 1;
   }
   to{
     opacity: 1;
-    transform: rotate(0turn);
-    transform: scale(1);
   }
 }
 
 
 #m {  
-
+  
+  overflow: hidden;
   position: absolute;
   top: 120px;
   height: calc(100vh - 240px);
@@ -157,11 +178,25 @@ h1 {
   width: calc(100vh - 240px);
   min-width: 310px;
   border: 5px solid rgba(0, 0, 0, 1);
+
+}
+
+.m起始狀態{
   animation-name: 左入;
   animation-duration:4s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 
+}
+.m伸縮消失{
+  animation-name: 左伸縮;
+  animation-duration:2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+.m待機狀態{
+  min-height: 310px;
+  min-width: 310px;
 }
 
 @keyframes 左入{
@@ -176,6 +211,49 @@ h1 {
   to{
     opacity: 1;
     transform: translate(0%,0%);
+  }
+}
+
+@keyframes 左伸縮{
+  from{
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 1;
+    top: 120px;
+    height: calc(100vh - 240px);
+    width: calc(100vh - 240px);
+    left: 120px;
+  }
+  20%{
+    width: 0;
+    left: 50vh;
+  }
+  30%{
+    top: 120px;
+    height: calc(100vh - 240px);
+  }
+  40%{
+    top: calc(50vh - 2.5px);
+    height: 0px;
+  }
+  60%{
+    width: 0;
+    left: 50vh;
+  }
+  70%{
+    width: calc(100vh - 240px);
+    left: 120px;
+  }
+  80%{
+    top: calc(50vh - 2.5px);
+    height: 0px;
+  }
+  to{
+    min-height: 0px;
+    min-width: 0px;
+    top: 120px;
+    height: calc(100vh - 240px);
+    opacity: 1;
   }
 }
 
@@ -213,6 +291,7 @@ h1 {
 }
 
 input {
+  overflow: hidden;
   position: absolute;
   top: calc(100vh - 106px);
   height: 30px;
@@ -226,10 +305,35 @@ input {
   justify-content: center;
   align-items: center;
   font-family: 'Noto Serif TC', serif;
+}
+
+.尺寸起始狀態{
   animation-name: 下入2;
   animation-duration:4.5s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
+}
+.尺寸伸縮消失{
+  animation-name: 下伸縮消失;
+  animation-duration:2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes 下伸縮消失{
+  from{
+    width: 52px;
+  }
+  30%{
+    width: 0px;
+  }
+  70%{
+    width: 0px;
+  }
+
+  to{
+    width: 52px;
+  }
 }
 
 
@@ -272,12 +376,21 @@ input {
   background-color: rgb(255, 170, 217);
   font-family: 'Noto Serif TC', serif;
   overflow: scroll;
+}
+
+.最終代碼起始狀態{
   animation-name: 右入;
   animation-duration:4.5s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
 }
-
+.最終代碼伸縮消失{
+  animation-name: 右伸縮;
+  animation-duration:2s;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
 
 @keyframes 右入{
   from{
@@ -294,6 +407,47 @@ input {
   }
 }
 
+@keyframes 右伸縮{
+  from{
+    min-width: 0px;
+    opacity: 1;
+    top: 120px;
+    height: calc(100vh - 240px);
+    width: calc(100vw - 106vh - 160px);
+    left: calc(106vh + 40px);
+  }
+  40%{
+    top: calc(50vh - 2.5px);
+    height: 0px;
+  }
+  30%{
+    top: 120px;
+    height: calc(100vh - 240px);
+  }
+  20%{
+    width: 0;
+    left: calc(50vw + 53vh + 40px);
+  }
+
+  60%{
+    width: 0;
+    left: calc(50vw + 53vh + 40px);
+  }
+  70%{
+    width: calc(100vw - 106vh - 160px);
+    left: calc(106vh + 40px);
+  }
+  80%{
+    top: calc(50vh - 2.5px);
+    height: 0px;
+  }
+  to{
+    min-width: 0px;
+    top: 120px;
+    height: calc(100vh - 240px);
+    opacity: 1;
+  }
+}
 
 
 
@@ -304,9 +458,11 @@ input {
   display:flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   top: 120px;
   height: calc(100vh - 240px);
   left: calc(100vh - 80px);
+  width: calc(6vh + 80px);
   border: 0px solid rgba(0, 0, 0, 1);
   animation-name: 上入;
   animation-duration:4s;
@@ -332,6 +488,10 @@ input {
   }
 }
 
+
+
+
+
 #按鈕 div {
   overflow: hidden;
   background-color: rgb(255, 216, 144);
@@ -341,9 +501,103 @@ input {
   font-size: calc(2.3vh - 6px);
   text-align:center;
   line-height: calc((100vh - 340px)/12);
-  animation-name: 展開;
+}
+
+.按鈕起始狀態 div{
+  animation-name: 展開暫時不採用;
   animation-duration:4s;
   animation-timing-function: cubic-bezier(.56,0,.68,1.23);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+
+.按鈕伸縮消失 #新增線段{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0s;
+}
+.按鈕伸縮消失 #刪除線段{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0.1s;
+}
+.按鈕伸縮消失 #復原{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0.2s;
+}
+.按鈕伸縮消失 #重做{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0.3s;
+}
+.按鈕伸縮消失 #自動對齊舊點{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0.4s;
+}
+.按鈕伸縮消失 #對齊整數或零點五{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0.5s;
+}
+.按鈕伸縮消失 #顯示或關閉網格{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0.6s;
+}
+.按鈕伸縮消失 #初始化{
+  animation-name: 按鈕伸縮;
+  animation-duration:2s;
+  animation-delay:0.7s;
+}
+
+
+@keyframes 按鈕伸縮{
+  from{
+    opacity: 1;
+    height: calc((100vh - 240px)/12);
+    width: calc(6vh + 80px);
+  }
+  15%{
+    top: calc(50vh - 2.5px);
+    height: 0px;
+  }
+  35%{
+    width: calc(6vh + 80px);
+  }
+  40%{
+    opacity: 1;
+    width: 0;
+    opacity: 1;
+    transform: scale(1);
+  }
+  43%{
+    opacity: 0;
+    transform: scale(0);
+  }
+  57%{
+    opacity: 0;
+    transform: scale(0);
+  }
+  60%{
+    opacity: 1;
+    width: 0;
+    transform: scale(1);
+  }
+  65%{
+    width: calc(6vh + 80px);
+    left: calc(106vh + 40px);
+  }
+  85%{
+    top: calc(50vh - 2.5px);
+    height: 0px;
+  }
+  to{
+    height: calc((100vh - 240px)/12);
+    opacity: 1;
+  }
 }
 
 @keyframes 展開{
@@ -908,6 +1162,48 @@ input {
     font-family: 'Noto Serif TC', serif;
   }
 
+  @keyframes 右伸縮{
+    from{
+      min-width: 0px;
+      opacity: 1;
+      top: calc(50vh - 155px);
+      height: 310px;
+      width: calc(100vw - 106vh - 160px);
+      left: calc(623px - (550px - 100vh) / 2);
+    }
+    40%{
+      top: calc(50vh - 2.5px);
+      height: 0px;
+    }
+    30%{
+      top: calc(50vh - 155px);
+      height: 310px;
+    }
+    20%{
+      width: 0;
+      left: calc(50vw + 53vh + 40px - 225px + 50vh);
+    }
+  
+    60%{
+      width: 0;
+      left: calc(50vw + 53vh + 40px - 225px + 50vh);
+    }
+    70%{
+      width: calc(100vw - 106vh - 160px);
+      left: calc(623px - (550px - 100vh) / 2);
+    }
+    80%{
+      top: calc(50vh - 2.5px);
+      height: 0px;
+    }
+    to{
+      min-width: 0px;
+      top: calc(50vh - 155px);
+      height: 310px;
+      opacity: 1;
+    }
+  }
+
   input {
     top: calc(100vh - 106px + (550px - 100vh) / 2);
     /*bottom: calc(74px - (550px - 100vh) / 2);*/
@@ -917,11 +1213,55 @@ input {
     top: calc(50vh - 155px);
     left: calc(50vh - 155px);
   }
+
+  @keyframes 左伸縮{
+    from{
+      min-height: 0px;
+      min-width: 0px;
+      opacity: 1;
+      top: calc(50vh - 155px);
+      height: 310px;
+      width: 310px;
+      left: calc(50vh - 155px);
+    }
+    20%{
+      width: 0;
+      left: calc(270px - (550px - 100vh) / 2 );
+    }
+    30%{
+      top: calc(50vh - 155px);
+      height: 310px;
+    }
+    40%{
+      top: calc(270px - (550px - 100vh) / 2 );
+      height: 0px;
+    }
+    60%{
+      width: 0;
+      left: calc(270px - (550px - 100vh) / 2 );
+    }
+    70%{
+      width: 310px;
+      left: calc(50vh - 155px);
+    }
+    80%{
+      top: calc(270px - (550px - 100vh) / 2 );
+      height: 0px;
+    }
+    to{
+      min-height: 0px;
+      min-width: 0px;
+      top: calc(50vh - 155px);
+      height: 310px;
+      width: 310px;
+      opacity: 1;
+    }
+  }
   
   #按鈕 {
 
     height: 310px;
-    left: calc(470px - (550px - 100vh) / 2);
+    left: calc(470px - (550px - 100vh) / 2.15);
     top: calc(50vh - 155px);
 
   }

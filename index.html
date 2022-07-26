@@ -12,11 +12,11 @@
     <div id="標題">Js canvas貝茲曲線所見即所得工具。<h1>Js canvas貝茲曲線所見即所得工具。</h1></div>
     <div id="頁面容器">
       <div id="比例尺"></div>
-      <div id="m">
+      <div id="m" class="m起始狀態">
         <canvas></canvas>
       </div>
       <div id="t"></div>
-      <div id="按鈕">
+      <div id="按鈕" class="按鈕起始狀態">
         <div id="新增線段">新增線段</div>
         <div id="刪除線段">刪除線段</div>
         <div id="復原">復原</div>
@@ -31,8 +31,8 @@
         <input id="原點變數名稱y" type="text">
         <input id="縮放比例" type="text">
       </div>
-      <div id="最終代碼"  spellcheck="false">代碼將生成於此處...</div>
-      <input id="輸出尺寸" type="text" name="" oninput="value=value.replace(/[^\d]/g,'')">
+      <div id="最終代碼" class="最終代碼起始狀態" spellcheck="false">代碼將生成於此處...</div>
+      <input id="輸出尺寸" type="text" name="" class="尺寸起始狀態" oninput="value=value.replace(/[^\d]/g,'')">
       <div id="移動端訊息">
         <div id="不支援">
           本工具暫不支援移動端使用，請以PC端開啟。<br>感謝您的理解與體諒。</div>
