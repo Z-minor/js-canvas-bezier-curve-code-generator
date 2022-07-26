@@ -846,6 +846,28 @@ input {
     display: block;
     opacity: 1;
   }
+
+  17%{
+    opacity: 1;
+  }
+  22%{
+    opacity: 0.2;
+  }
+  26%{
+    opacity: 0.9;
+  }
+  30%{
+    opacity: 0;
+  }
+  33%{
+    opacity: 0.8;
+  }
+  66%{
+    opacity: 0.9;
+  }
+  77%{
+    opacity: 1;
+  }
   99%{
     display: block;
     opacity: 1;
